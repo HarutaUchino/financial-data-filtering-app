@@ -1,70 +1,179 @@
-# Getting Started with Create React App
+# Financial Data Filtering App
+## FrontEnd Website
+[https://harutauchino.github.io/financial-data-filtering-app/](https://harutauchino.github.io/financial-data-filtering-app/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Github Page
+[https://github.com/HarutaUchino/financial-data-filtering-app](https://github.com/HarutaUchino/financial-data-filtering-app)
 
-## Available Scripts
+This application fetches and displays annual income statements for Apple (AAPL) from the Financial Modeling Prep API. Users can filter and sort the data to analyze key financial metrics.
 
-In the project directory, you can run:
+## 1. Project Structure
 
-### `npm start`
+The project structure is organized as follows:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+financial-data-filtering-app/
+├── README.md
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+├── public/
+│   └── index.html
+└── src/
+    ├── App.jsx
+    ├── App.css
+    ├── index.js
+    |── index.css
+    ├── components/
+    │   ├── FinancialTable.jsx
+    │   └── Filters.jsx
+    └── services/
+        └── api.js
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### (Optional) If using FastAPI for a backend:
+```
+financial-data-filtering-app/
+├── backend/
+│   ├── main.py
+│   ├── requirements.txt
+│   └── ...
+└── ...
+```
 
-### `npm test`
+## 2. Setup Instructions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 2.1. Frontend Setup (React with TailwindCSS)
 
-### `npm run build`
+1.  **Create a new React app:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    ```bash
+    npx create-react-app 1-financial
+    cd 1-financial
+    mkdir src/components
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2.  **Install TailwindCSS:**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    ```bash
+    npm install -D tailwindcss postcss autoprefixer
+    npx tailwindcss init -p
+    ```
 
-### `npm run eject`
+3.  **Configure Tailwind:**
+    *   In `tailwind.config.js`, ensure the `content` array includes your source files.
+    *   In `src/index.css` (or `App.css`), include the Tailwind directives:
+        ```css
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+        ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4.  **Install additional dependencies (if needed):**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    ```bash
+    npm install axios
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 2.2. Backend Setup (Optional - FastAPI)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1.  **Create a `backend` folder** at the root of your project.
+2.  **Install FastAPI & dependencies** in a separate virtual environment:
 
-## Learn More
+    ```bash
+    cd backend
+    python -m venv venv
+    source venv/bin/activate  # or venv\Scripts\activate on Windows
+    pip install fastapi uvicorn requests os dotenv
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3.  **Create a `main.py` file** with your FastAPI application logic.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 3. Running the Application
 
-### Code Splitting
+### 3.1. Frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1.  **Setting json**
+    ```json
+        "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test",
+      "eject": "react-scripts eject",
+      "predeploy": "npm run build",
+      "deploy": "gh-pages -d build"
+    },  
+    ```
 
-### Analyzing the Bundle Size
+2.  **Start the development server:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    ```bash
+    npm start
+    ```
 
-### Making a Progressive Web App
+    The application will typically be accessible at `http://localhost:3000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 3.2. Backend (Optional)
 
-### Advanced Configuration
+1.  **Navigate to the backend directory:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    ```bash
+    cd backend
+    ```
 
-### Deployment
+2.  **Run the FastAPI server:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+    ```bash
+    uvicorn main:app --reload
+    ```
 
-### `npm run build` fails to minify
+    The backend will typically be accessible at `http://localhost:8000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## 5. Deployment
+
+### 5.1. Deploy to GitHub Pages (Frontend Only)
+
+1.  **Install `gh-pages`:**
+
+    ```bash
+    npm install --save-dev gh-pages
+    ```
+
+2.  **Add deployment scripts** to your `package.json`:
+
+    ```json
+    {
+      "homepage": "https://<my-username>.github.io/<repo-name>/",
+      "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build",
+        ...
+      },
+      ...
+    }
+    ```
+
+3.  **Deploy:**
+
+    ```bash
+    npm run deploy
+    ```
+
+    Your app should now be live at `https://<my-username>.github.io/<repo-name>/`.
+
+## 6. Link to Deployed App
+
+[Deployed on GitHub Pages](https://harutauchino.github.io/financial-data-filtering-app/)
+
+## 7. Conclusion
+
+This application provides a way to fetch, filter, and sort financial data for Apple (AAPL) using the Financial Modeling Prep API. It includes:
+
+*   A React (JavaScript) frontend with TailwindCSS styling.
+*   Filtering by date range, revenue range, and net income range.
+*   Sorting by date, revenue, and net income.
+*   A responsive design for desktop and mobile.
+*   An optional FastAPI backend for server-side filtering and sorting.
+*   A straightforward deployment process using GitHub Pages.
+
