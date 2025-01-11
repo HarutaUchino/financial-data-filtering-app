@@ -61,7 +61,7 @@ financial-data-filtering-app/
     ```
 
 3.  **Configure Tailwind:**
-    *   In `tailwind.config.js`, ensure the `content` array includes your source files.
+    *   In `tailwind.config.js`, ensure the `content` array includes my source files.
     *   In `src/index.css` (or `App.css`), include the Tailwind directives:
         ```css
         @tailwind base;
@@ -77,7 +77,7 @@ financial-data-filtering-app/
 
 ### 2.2. Backend Setup (Optional - FastAPI)
 
-1.  **Create a `backend` folder** at the root of your project.
+1.  **Create a `backend` folder** at the root of my project.
 2.  **Install FastAPI & dependencies** in a separate virtual environment:
 
     ```bash
@@ -87,7 +87,7 @@ financial-data-filtering-app/
     pip install fastapi uvicorn requests os dotenv
     ```
 
-3.  **Create a `main.py` file** with your FastAPI application logic.
+3.  **Create a `main.py` file** with my FastAPI application logic.
 
 ## 3. Running the Application
 
@@ -140,7 +140,7 @@ financial-data-filtering-app/
     npm install --save-dev gh-pages
     ```
 
-2.  **Add deployment scripts** to your `package.json`:
+2.  **Add deployment scripts** to my `package.json`:
 
     ```json
     {
@@ -148,9 +148,7 @@ financial-data-filtering-app/
       "scripts": {
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build",
-        ...
       },
-      ...
     }
     ```
 
@@ -160,7 +158,7 @@ financial-data-filtering-app/
     npm run deploy
     ```
 
-    Your app should now be live at `https://<my-username>.github.io/<repo-name>/`.
+    my app should now be live at `https://<my-username>.github.io/<repo-name>/`.
 
 ## 6. Link to Deployed App
 
